@@ -56,6 +56,7 @@ The major aim of thie project is to gain insight into the sales data of Walmart 
 2. Which of the customer types brings the most revenue?
 3. Which city has the largest tax percent/ VAT (**Value Added Tax**)?
 4. Which customer type pays the most in VAT?
+5. Week-over-week sales growth per branch?
 
 ### Customer
 
@@ -69,3 +70,4 @@ The major aim of thie project is to gain insight into the sales data of Walmart 
 8. Which time of the day do customers give most ratings per branch?
 9. Which day fo the week has the best avg ratings?
 10. Which day of the week has the best average ratings per branch?
+11. How many customers fall into each spend category: low (<$100), medium ($100–$300), high (>$300)?
