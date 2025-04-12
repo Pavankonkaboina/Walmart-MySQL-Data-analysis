@@ -235,3 +235,19 @@ where rnk = 1;
 select branch , avg(total) , customer_type from sales
 group by 1, 3
 order by 2; 
+
+-- How many customers fall into each spend category: low (<$100), medium ($100–$300), high (>$300) only for one visit?
+select customer_type,
+(case
+when total < 100 then "Low spending" 
+when total > 100 and total < 300 then "Medium spending"
+else "High spending" 
+end ) spending_category
+from sales;
+
+
+
+
+
+
+
