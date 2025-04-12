@@ -167,6 +167,13 @@ group by 1
 order by 2 desc
 limit 1;
 
+-- Week-over-week sales growth per branch
+SELECT branch, WEEK(date) AS week_no, SUM(total) AS weekly_sales,
+LAG(SUM(total)) OVER (PARTITION BY branch ORDER BY WEEK(date)) AS prev_week_sales,
+(SUM(total) - LAG(SUM(total)) OVER (PARTITION BY branch ORDER BY WEEK(date))) / LAG(SUM(total)) OVER (PARTITION BY branch ORDER BY WEEK(date)) * 100 AS wow_growth
+FROM sales
+GROUP BY branch, WEEK(date);
+
 -- ---------------------------------------------------------Customer--------------------------------------------------------------------------
 
 -- How many unique customer types does the data have?
@@ -223,3 +230,8 @@ rank () over (partition by branch order by avg(rating) desc) as rnk
 from sales
 group by 1,2 )ranking
 where rnk = 1;
+
+-- What is the average spend per customer type and how does it vary across branches? 
+select branch , avg(total) , customer_type from sales
+group by 1, 3
+order by 2; 
